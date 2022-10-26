@@ -5,7 +5,7 @@ import http from "http";
 import CSRF from "koa-csrf";
 import staticServer from "koa-static";
 import cors from "@koa/cors";
-import { rootPath } from "../constant";
+import { ROOT_PATH } from "../constant";
 import { main as controller } from "./controllers";
 
 export function startKoa() {
@@ -15,7 +15,7 @@ export function startKoa() {
   app.use(cors());
   app.use(new CSRF());
   app.use(
-    staticServer(rootPath + "/html", {
+    staticServer(ROOT_PATH + "/html", {
       maxAge: 30 * 24 * 3600 * 1000, // 30天的强缓存
       immutable: true, // 声明资源是不会变更的可以永久缓存
     })
